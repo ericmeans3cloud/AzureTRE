@@ -115,62 +115,64 @@ jobs:
 
       - name: Check required values
         id: check_required_values
-        # since this is a resuable workflow, required=true secrets will always have a value but it can be empty.
+        # since this is a reusable workflow, required=true secrets will always have a value but it can be empty.
+        # if the secret exists in the GitHub environment but its value has not been set, GH will pass the value
+        # 'null' instead of an empty string.
         run: |
-          if [ "${{ secrets.AAD_TENANT_ID }}" == '' ]; then
+          if [[ "${{ secrets.AAD_TENANT_ID }}" == '' ||  "${{ secrets.AAD_TENANT_ID }}" == 'null' ]]; then
             echo "Missing secret: AAD_TENANT_ID" && exit 1
           fi
-          if [ "${{ secrets.ACR_NAME }}" == '' ]; then
+          if [[ "${{ secrets.ACR_NAME }}" == '' ||  "${{ secrets.ACR_NAME }}" == 'null' ]]; then
             echo "Missing secret: ACR_NAME" && exit 1
           fi
-          if [ "${{ secrets.API_CLIENT_ID }}" == '' ]; then
+          if [[ "${{ secrets.API_CLIENT_ID }}" == '' ||  "${{ secrets.API_CLIENT_ID }}" == 'null' ]]; then
             echo "Missing secret: API_CLIENT_ID" && exit 1
           fi
-          if [ "${{ secrets.API_CLIENT_SECRET }}" == '' ]; then
+          if [[ "${{ secrets.API_CLIENT_SECRET }}" == '' ||  "${{ secrets.API_CLIENT_SECRET }}" == 'null' ]]; then
             echo "Missing secret: API_CLIENT_SECRET" && exit 1
           fi
-          if [ "${{ secrets.APPLICATION_ADMIN_CLIENT_ID }}" == '' ]; then
+          if [[ "${{ secrets.APPLICATION_ADMIN_CLIENT_ID }}" == '' ||  "${{ secrets.APPLICATION_ADMIN_CLIENT_ID }}" == 'null' ]]; then
             echo "Missing secret: APPLICATION_ADMIN_CLIENT_ID" && exit 1
           fi
-          if [ "${{ secrets.APPLICATION_ADMIN_CLIENT_SECRET }}" == '' ]; then
+          if [[ "${{ secrets.APPLICATION_ADMIN_CLIENT_SECRET }}" == '' ||  "${{ secrets.APPLICATION_ADMIN_CLIENT_SECRET }}" == 'null' ]]; then
             echo "Missing secret: APPLICATION_ADMIN_CLIENT_SECRET" && exit 1
           fi
-          if [ "${{ secrets.MGMT_RESOURCE_GROUP_NAME }}" == '' ]; then
+          if [[ "${{ secrets.MGMT_RESOURCE_GROUP_NAME }}" == '' ||  "${{ secrets.MGMT_RESOURCE_GROUP_NAME }}" == 'null' ]]; then
             echo "Missing secret: MGMT_RESOURCE_GROUP_NAME" && exit 1
           fi
-          if [ "${{ secrets.MGMT_STORAGE_ACCOUNT_NAME }}" == '' ]; then
+          if [[ "${{ secrets.MGMT_STORAGE_ACCOUNT_NAME }}" == '' ||  "${{ secrets.MGMT_STORAGE_ACCOUNT_NAME }}" == 'null' ]]; then
             echo "Missing secret: MGMT_STORAGE_ACCOUNT_NAME" && exit 1
           fi
-          if [ "${{ secrets.SWAGGER_UI_CLIENT_ID }}" == '' ]; then
+          if [[ "${{ secrets.SWAGGER_UI_CLIENT_ID }}" == '' ||  "${{ secrets.SWAGGER_UI_CLIENT_ID }}" == 'null' ]]; then
             echo "Missing secret: SWAGGER_UI_CLIENT_ID" && exit 1
           fi
-          if [ "${{ secrets.TEST_APP_ID }}" == '' ]; then
+          if [[ "${{ secrets.TEST_APP_ID }}" == '' ||  "${{ secrets.TEST_APP_ID }}" == 'null' ]]; then
             echo "Missing secret: TEST_APP_ID" && exit 1
           fi
-          if [ "${{ secrets.TEST_WORKSPACE_APP_ID }}" == '' ]; then
+          if [[ "${{ secrets.TEST_WORKSPACE_APP_ID }}" == '' ||  "${{ secrets.TEST_WORKSPACE_APP_ID }}" == 'null' ]]; then
             echo "Missing secret: TEST_WORKSPACE_APP_ID" && exit 1
           fi
-          if [ "${{ secrets.TEST_WORKSPACE_APP_SECRET }}" == '' ]; then
+          if [[ "${{ secrets.TEST_WORKSPACE_APP_SECRET }}" == '' ||  "${{ secrets.TEST_WORKSPACE_APP_SECRET }}" == 'null' ]]; then
             echo "Missing secret: TEST_WORKSPACE_APP_SECRET" && exit 1
           fi
-          if [ "${{ secrets.TEST_ACCOUNT_CLIENT_ID }}" == '' ]; then
+          if [[ "${{ secrets.TEST_ACCOUNT_CLIENT_ID }}" == '' ||  "${{ secrets.TEST_ACCOUNT_CLIENT_ID }}" == 'null' ]]; then
             echo "Missing secret: TEST_ACCOUNT_CLIENT_ID" && exit 1
           fi
-          if [ "${{ secrets.TEST_ACCOUNT_CLIENT_SECRET }}" == '' ]; then
+          if [[ "${{ secrets.TEST_ACCOUNT_CLIENT_SECRET }}" == '' ||  "${{ secrets.TEST_ACCOUNT_CLIENT_SECRET }}" == 'null' ]]; then
             echo "Missing secret: TEST_ACCOUNT_CLIENT_SECRET" && exit 1
           fi
-          if [ "${{ secrets.TRE_ID }}" == '' ]; then
+          if [[ "${{ secrets.TRE_ID }}" == '' ||  "${{ secrets.TRE_ID }}" == 'null' ]]; then
             echo "Missing secret: TRE_ID" && exit 1
           fi
-          if [ "${{ secrets.AZURE_CREDENTIALS }}" == '' ]; then
+          if [[ "${{ secrets.AZURE_CREDENTIALS }}" == '' ||  "${{ secrets.AZURE_CREDENTIALS }}" == 'null' ]]; then
             echo "Missing secret: AZURE_CREDENTIALS" && exit 1
           fi
 
-          if [ "${{ inputs.DEVCONTAINER_TAG }}" == '' ]; then
+          if [[ "${{ inputs.DEVCONTAINER_TAG }}" == '' ||  "${{ inputs.DEVCONTAINER_TAG }}" == 'null' ]]; then
             echo "Missing input: DEVCONTAINER_TAG" && exit 1
           fi
 
-          if [ "${{ vars.LOCATION }}" == '' ]; then
+          if [[ "${{ vars.LOCATION }}" == '' ||  "${{ vars.LOCATION }}" == 'null' ]]; then
             echo "Missing variable: LOCATION" && exit 1
           fi
 
