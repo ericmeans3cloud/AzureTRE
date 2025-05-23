@@ -1,0 +1,74 @@
+{
+  "schemaType": "ParameterSet",
+  "schemaVersion": "1.0.1",
+  "namespace": "",
+  "name": "tre-shared-service-data-factory",
+  "parameters": [
+    {
+      "name": "tre_id",
+      "source": {
+        "env": "TRE_ID"
+      }
+    },
+    {
+      "name": "id",
+      "source": {
+        "env": "ID"
+      }
+    },
+    {
+      "name": "tfstate_container_name",
+      "source": {
+        "env": "TERRAFORM_STATE_CONTAINER_NAME"
+      }
+    },
+    {
+      "name": "tfstate_resource_group_name",
+      "source": {
+        "env": "MGMT_RESOURCE_GROUP_NAME"
+      }
+    },
+    {
+      "name": "tfstate_storage_account_name",
+      "source": {
+        "env": "MGMT_STORAGE_ACCOUNT_NAME"
+      }
+    },
+    {
+      "name": "arm_environment",
+      "source": {
+        "env": "ARM_ENVIRONMENT"
+      }
+    },
+    {
+      "name": "enable_cmk_encryption",
+      "source": {
+        "env": "ENABLE_CMK_ENCRYPTION"
+      }
+    },
+    {
+      "name": "key_store_id",
+      "source": {
+        "env": "KEY_STORE_ID"
+      }
+    },
+    {
+      "name": "use_external_identity",
+      "source": {
+        "env": "USE_EXTERNAL_IDENTITY"
+      }
+    },
+    {
+      "name": "user_assigned_identity_rg",
+      "source": {
+        "env": "USER_ASSIGNED_IDENTITY_RG"
+      }
+    },
+    {
+      "name": "user_assigned_identity_name",
+      "source": {
+        "env": "USER_ASSIGNED_IDENTITY_NAME"
+      }
+    }
+  ]
+}

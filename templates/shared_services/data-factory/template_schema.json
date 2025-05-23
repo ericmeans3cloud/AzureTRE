@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/unchealth/ccm-ce-shirenp/templates/shared_services/data-factory/template_schema.json",
+  "type": "object",
+  "title": "Data Factory Shared Service",
+  "description": "Provides Azure Data Factory in the core network",
+  "required": [
+  ],
+  "properties": {
+    "use_external_identity": {
+      "$id": "#/properties/use_external_identity",
+      "type": "boolean",
+      "title": "Use Externally Created Identity",
+      "description": "If false, the Shared Service will automatically create a user-defined managed identity. If true, it will use the provided externally created identity.",
+      "default": false,
+      "updateable": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "use_external_identity": {
+            "const": true
+          }
+        },
+        "required": [
+          "use_external_identity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "user_assigned_identity_rg": {
+            "$id": "#/properties/user_assigned_identity_rg",
+            "type": "string",
+            "title": "User Assigned Identity Resource Group",
+            "description": "The name of the Resource Group that contains the User Assigned Identity to use for Azure Data Factory",
+            "updateable": true
+          },
+          "user_assigned_identity_name": {
+            "$id": "#/properties/user_assigned_identity_name",
+            "type": "string",
+            "title": "User Assigned Identity Name",
+            "description": "User Assigned Identity to use for Azure Data Factory",
+            "updateable": true
+          }
+        }
+      }
+    }
+  ]
+}
